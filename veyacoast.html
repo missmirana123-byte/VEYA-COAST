@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VEYA COAST by GrizD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #060d1a;
+      --accent: #00c6ff;
+      --accent2: #f97316;
+      --text: #ffffff;
+      --subtle: #6b7a8d;
+    }
+
+    body {
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Outfit', sans-serif;
+      color: var(--text);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ocean wave bg */
+    .bg-waves {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: -50%;
+      width: 200%;
+      height: 180px;
+      border-radius: 40%;
+      opacity: 0.06;
+      animation: wave-anim linear infinite;
+    }
+
+    .wave:nth-child(1) {
+      background: #00c6ff;
+      animation-duration: 8s;
+      bottom: -30px;
+    }
+    .wave:nth-child(2) {
+      background: #0072ff;
+      animation-duration: 11s;
+      bottom: -50px;
+      opacity: 0.04;
+    }
+    .wave:nth-child(3) {
+      background: #00c6ff;
+      animation-duration: 14s;
+      bottom: -10px;
+      opacity: 0.03;
+    }
+
+    /* Top glow */
+    .glow-top {
+      position: fixed;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(0,198,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes wave-anim {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Card */
+    .card {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 420px;
+      animation: fadeUp 0.7s cubic-bezier(.22,.68,0,1.2) both;
+    }
+
+    /* Logo ring */
+    .logo-ring {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid rgba(0,198,255,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+      position: relative;
+      box-shadow: 0 0 30px rgba(0,198,255,0.15);
+    }
+
+    .logo-ring::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,198,255,0.1);
+    }
+
+    .logo-inner {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      text-shadow: 0 0 20px rgba(0,198,255,0.6);
+    }
+
+    /* Title */
+    .title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      letter-spacing: 0.12em;
+      text-align: center;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+      text-shadow: 0 0 40px rgba(0,198,255,0.3);
+    }
+
+    .subtitle {
+      font-size: 0.8rem;
+      color: var(--subtle);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 2.2rem;
+    }
+
+    .subtitle span {
+      color: rgba(0,198,255,0.6);
+    }
+
+    /* Buttons */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      width: 100%;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.07);
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #fff;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.2s;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .link-btn:hover::before { opacity: 1; }
+
+    .link-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .link-btn:active { transform: scale(0.97); }
+
+    /* Saweria - orange tinted */
+    .btn-saweria {
+      background: linear-gradient(135deg, #1a1010 0%, #1e1206 100%);
+      border-color: rgba(249,115,22,0.25);
+      box-shadow: 0 4px 20px rgba(249,115,22,0.08);
+    }
+
+    .btn-saweria:hover {
+      border-color: rgba(249,115,22,0.5);
+      box-shadow: 0 8px 30px rgba(249,115,22,0.2);
+    }
+
+    /* Discord - blurple tinted */
+    .btn-discord {
+      background: linear-gradient(135deg, #0d1020 0%, #111526 100%);
+      border-color: rgba(88,101,242,0.25);
+      box-shadow: 0 4px 20px rgba(88,101,242,0.08);
+    }
+
+    .btn-discord:hover {
+      border-color: rgba(88,101,242,0.5);
+      box-shadow: 0 8px 30px rgba(88,101,242,0.25);
+    }
+
+    .btn-icon {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 2.2rem;
+      font-size: 0.75rem;
+      color: var(--subtle);
+      letter-spacing: 0.05em;
+    }
+
+    .footer span { color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-waves">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+  <div class="glow-top"></div>
+
+  <div class="card">
+
+    <div class="logo-ring">
+      <span class="logo-inner">VC</span>
+    </div>
+
+    <h1 class="title">VEYA COAST</h1>
+    <p class="subtitle">by <span>GrizD</span></p>
+
+    <div class="links">
+
+      <!-- Saweria -->
+      <a href="https://saweria.co/" class="link-btn btn-saweria">
+        <!-- Saweria icon (coin/donate style) -->
+        <svg class="btn-icon" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="11" stroke="#f97316" stroke-width="1.8"/>
+          <text x="13" y="17.5" text-anchor="middle" font-family="Outfit,sans-serif" font-weight="700" font-size="10" fill="#f97316">S</text>
+        </svg>
+        Saweria
+      </a>
+
+      <!-- Discord -->
+      <a href="https://discord.gg/" class="link-btn btn-discord">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="#5865F2" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/>
+        </svg>
+        Discord
+      </a>
+
+    </div>
+
+    <p class="footer">Coded with <span>♥</span> by GrizD</p>
+  </div>
+
+</body>
+</html>
